@@ -1,0 +1,63 @@
+body {
+    background-image: url('fondoeventos.png');
+    background-size: cover;
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+.navbar {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 15px;
+    transition: background-color 0.5s ease;
+    backdrop-filter: blur(10px);
+}
+
+.navbar-brand {
+    color: #ffffff !important;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand img {
+    width: 40px; /* ajustar el ancho de la imagen */
+    height: auto; /* mantener la proporción */
+    margin-right: 10px; /* ajustar el espacio entre la imagen y el texto */
+}
+
+.navbar-brand-text {
+    color: #ffffff;
+    transition: color 0.5s ease;
+}
+
+.navbar-brand-text:hover {
+    color: #007bff; /* azul cuando se coloca el cursor */
+}
+
+.navbar-nav .nav-link {
+    color: #ffffff !important;
+    transition: color 0.5s ease;
+}
+
+.nav-link:hover {
+    color: #007bff !important;
+}
+
+.dropdown-item:hover {
+    color: #007bff !important; /* azul suave cuando se coloca el cursor */
+}
+
+.navbar-toggler-icon {
+    color: #ffffff;
+}
+
+.navbar:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.dropdown-menu {
+    z-index: 5000;
+}
