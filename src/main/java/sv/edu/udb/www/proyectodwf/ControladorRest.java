@@ -3,7 +3,6 @@ package sv.edu.udb.www.proyectodwf;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 
 @Controller
@@ -12,31 +11,31 @@ public class ControladorRest {
     @GetMapping("/aprobareventos")
     public String aprobareventos() {
         log.info("Vista de Aprobar Eventos");
-        return "aprobareventos";
+        return "admin/aprobareventos";
     }
 
     @GetMapping("/reservaciones")
     public String reservaciones() {
         log.info("Vista de Reservaciones Realizadas");
-        return "reservacionesrealizadas";
+        return "organizador/reservacionesrealizadas";
     }
 
     @GetMapping("/rechazarevento")
     public String rechazarevento() {
         log.info("Vista de Rechazar Evento");
-        return "rechazarevento";
+        return "admin/rechazarevento";
     }
 
     @GetMapping("/misreservaciones")
     public String misreservaciones() {
         log.info("Vista de Rechazar Evento");
-        return "misreservaciones";
+        return "cliente/misreservaciones";
     }
 
     @GetMapping("/registroeventos")
     public String registroeventos() {
         log.info("Vista de Registrar Evento");
-        return "registroeventos";
+        return "organizador/registroeventos";
     }
     @GetMapping("/plantilla")
     public String plantilla() {
@@ -46,18 +45,29 @@ public class ControladorRest {
     @GetMapping("/editarmireservacion")
     public String editarmireservacion() {
         log.info("Vista de Editar mi reservación");
-        return "editarmireservacion";
+        return "cliente/editarmireservacion";
     }
 
     @GetMapping("/eventosregistrados")
     public String eventosregistrados() {
         log.info("Vista de los Eventos Registrados");
-        return "eventosregistrados";
+        return "cliente/eventosregistrados";
     }
     @GetMapping("/editarreservacion")
     public String editarreservacion() {
         log.info("Vista de Editar Reservación");
-        return "editarreservacion";
+        return "admin/editarreservacion";
     }
 
+    @GetMapping("/login")
+    public String login() {
+        log.info("Vista de Login");
+        return "login";
+    }
+
+    @GetMapping("/reservarcupo")
+    public String reservarcupo() {
+        log.info("Vista de Reservar Cupo");
+        return "cliente/reservarcupo";
+    }
 }
