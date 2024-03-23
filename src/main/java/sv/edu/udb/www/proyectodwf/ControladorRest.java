@@ -48,17 +48,16 @@ public class ControladorRest {
         return "cliente/editarmireservacion";
     }
 
-<<<<<<< HEAD
     @GetMapping("/eventosdisponibles")
     public String eventosdisponibles() {
         log.info("Vista de los Eventos Disponibles");
         return "cliente/eventosdisponibles";
-=======
+    }
     @GetMapping("/eventosregistrados")
     public String eventosregistrados() {
         log.info("Vista de los Eventos Registrados");
         return "cliente/eventosregistrados";
->>>>>>> 4c20591ec4e8c6e0165b3c495034c3668ee56ba6
+
     }
     @GetMapping("/editarreservacion")
     public String editarreservacion() {
@@ -77,7 +76,6 @@ public class ControladorRest {
         log.info("Vista de Reservar Cupo");
         return "cliente/reservarcupo";
     }
-<<<<<<< HEAD
 
     @GetMapping("/controlevento")
     public String controlevento() {
@@ -92,6 +90,3 @@ public class ControladorRest {
 }
 
 
-=======
-}
->>>>>>> 4c20591ec4e8c6e0165b3c495034c3668ee56ba6
