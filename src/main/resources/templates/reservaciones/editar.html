@@ -60,7 +60,44 @@
     <div class="row">
         <div class="col"></div>
         <div class="col-10">
-            <!-- Aquí agreguen la secciones o contenido de sus páginas -->
+            <h1>Editar Reservación</h1>
+            <form th:object="${reservacion}" th:action="@{/reservaciones/editar/{id}(id=${reservacion.reservacionId})}" method="post">
+                <div class="mb-3">
+                    <label for="usuarioId" class="form-label">Dueño de la Reservación</label>
+                    <select class="form-select" id="usuarioId" name="usuarioId" required>
+                        <option value="" disabled selected>Selecciona un Dueño</option>
+                        <option th:each="usuario : ${usuarios}" th:value="${usuario.usuarioId}" th:text="${usuario.nombre}"></option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="eventoId" class="form-label">Evento</label>
+                    <select class="form-select" id="eventoId" name="eventoId" required>
+                        <option value="" disabled selected>Selecciona un Evento</option>
+                        <option th:each="evento : ${eventos}" th:value="${evento.eventoId}" th:text="${evento.nombreEvento}"></option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="nombreContacto" class="form-label">Nombre de Contacto</label>
+                    <input type="text" class="form-control" id="nombreContacto" name="nombreContacto" th:value="${reservacion.nombreContacto}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="correoElectronico" class="form-label">Correo Electrónico</label>
+                    <input type="email" class="form-control" id="correoElectronico" name="correoElectronico" th:value="${reservacion.correoElectronico}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="telefono" class="form-label">Teléfono</label>
+                    <input type="text" class="form-control" id="telefono" name="telefono" th:value="${reservacion.telefono}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="cantidadCupos" class="form-label">Cantidad de Cupos</label>
+                    <input type="number" class="form-control" id="cantidadCupos" name="cantidadCupos" th:value="${reservacion.cantidadCupos}" required>
+                </div>
+                <div class="mb-3">
+                    <label for="totalPagar" class="form-label">Total a Pagar</label>
+                    <input type="number" class="form-control" id="totalPagar" name="totalPagar" th:value="${reservacion.totalPagar}" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            </form>
         </div>
         <div class="col"></div>
     </div>
