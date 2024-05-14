@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="https://jakarta.ee/xml/ns/persistence/orm"
+                 version="3.0">
+
+    <entity class="sv.edu.udb.www.proyectodwf.entities.EstadoEvento">
+        <table name="estado_evento" schema="dwf_proyecto" catalog=""/>
+        <attributes>
+            <id name="estadoId">
+                <column name="estado_id" precision="-1"/>
+            </id>
+            <basic name="estado">
+                <column name="estado" nullable="false" length="20"/>
+            </basic>
+        </attributes>
+    </entity>
+</entity-mappings>

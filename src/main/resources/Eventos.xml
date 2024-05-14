@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="https://jakarta.ee/xml/ns/persistence/orm"
+                 version="3.0">
+
+    <entity class="sv.edu.udb.www.proyectodwf.entities.Eventos">
+        <table name="eventos" schema="dwf_proyecto" catalog=""/>
+        <attributes>
+            <id name="eventoId">
+                <column name="evento_id" precision="-1"/>
+            </id>
+            <basic name="nombreEvento">
+                <column name="nombre_evento" nullable="false" length="100"/>
+            </basic>
+            <basic name="descripcion">
+                <column name="descripcion" nullable="false" length="200"/>
+            </basic>
+            <basic name="tipoEventoId">
+                <column name="tipo_evento_id" nullable="false" precision="-1"/>
+            </basic>
+            <basic name="ubicacion">
+                <column name="ubicacion" nullable="false" length="100"/>
+            </basic>
+            <basic name="fecha">
+                <column name="fecha" nullable="false" precision="-1"/>
+            </basic>
+            <basic name="hora">
+                <column name="hora" nullable="false" length="5"/>
+            </basic>
+            <basic name="capacidad">
+                <column name="capacidad" nullable="false" precision="-1"/>
+            </basic>
+            <basic name="precio">
+                <column name="precio" nullable="false" precision="2"/>
+            </basic>
+            <basic name="empresaId">
+                <column name="empresa_id" nullable="false" precision="-1"/>
+            </basic>
+            <basic name="estadoId">
+                <column name="estado_id" nullable="false" precision="-1"/>
+            </basic>
+        </attributes>
+    </entity>
+</entity-mappings>

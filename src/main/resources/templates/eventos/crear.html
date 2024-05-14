@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Evento</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-..." crossorigin="anonymous">
+    <link rel="stylesheet" href="/estilos.css">
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="/calendario.png" alt="Calendario">
+                <span class="navbar-brand-text">Sistema de Eventos</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav ms-auto">
+
+                    <div class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownEventos" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-calendar-alt fa-lg"></i>
+                            Eventos
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownEventos">
+                            <li><a class="dropdown-item" href="/registroeventos">Registrar eventos</a></li>
+                            <li><a class="dropdown-item" href="/eventosregistrados">Eventos registrados</a></li>
+                            <li><a class="dropdown-item" href="/aprobareventos">Aprobar eventos</a></li>
+                            <li><a class="dropdown-item" href="#eventos-disponibles">Eventos disponibles</a></li>
+                            <li><a class="dropdown-item" href="#control-eventos">Control de eventos</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownReservaciones" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-book fa-lg"></i>
+                            Reservaciones
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownReservaciones">
+                            <li><a class="dropdown-item" href="/misreservaciones">Mis Reservaciones</a></li>
+                            <li><a class="dropdown-item" href="/reservaciones">Reservaciones</a></li>
+                            <li><a class="dropdown-item" href="/reservarcupo">Reservar Cupos</a></li>
+                        </ul>
+                    </div>
+
+                    <a class="nav-link" href="/login">
+                        <i class="fas fa-sign-in-alt fa-lg"></i>
+                        Iniciar Sesión
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="container">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-10">
+            <h1>Crear Nuevo Evento</h1>
+            <form action="/eventos/crear" method="post">
+                <div class="mb-3">
+                    <label for="nombreEvento" class="form-label">Nombre del Evento</label>
+                    <input type="text" class="form-control" id="nombreEvento" name="nombreEvento" required>
+                </div>
+                <div class="mb-3">
+                    <label for="descripcion" class="form-label">Descripción</label>
+                    <textarea class="form-control" id="descripcion" name="descripcion" rows="3" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="ubicacion" class="form-label">Ubicación</label>
+                    <input type="text" class="form-control" id="ubicacion" name="ubicacion" required>
+                </div>
+                <div class="mb-3">
+                    <label for="fecha" class="form-label">Fecha</label>
+                    <input type="date" class="form-control" id="fecha" name="fecha" required>
+                </div>
+                <div class="mb-3">
+                    <label for="hora" class="form-label">Hora</label>
+                    <input type="time" class="form-control" id="hora" name="hora" required>
+                </div>
+                <div class="mb-3">
+                    <label for="capacidad" class="form-label">Capacidad</label>
+                    <input type="number" class="form-control" id="capacidad" name="capacidad" min="1" required>
+                </div>
+                <div class="mb-3">
+                    <label for="precio" class="form-label">Precio</label>
+                    <input type="number" class="form-control" id="precio" name="precio" min="0" step="0.01" required>
+                </div>
+                <div class="mb-3">
+                    <label for="tipoEventoId" class="form-label">Tipo Evento</label>
+                    <select class="form-select" id="tipoEventoId" name="tipoEventoId" required>
+                        <option value="" disabled selected>Selecciona un Tipo de Evento</option>
+                        <option th:each="tipo : ${tipos}" th:value="${tipo.tipoEventoId}" th:text="${tipo.nombreTipoEvento}"></option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="empresaId" class="form-label">Empresa Organizadora</label>
+                    <select class="form-select" id="empresaId" name="empresaId" required>
+                        <option value="" disabled selected>Selecciona una Empresa Organizadora</option>
+                        <option th:each="empresa : ${empresas}" th:value="${empresa.empresaId}" th:text="${empresa.nombreEmpresa}"></option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="estadoId" class="form-label">Estado</label>
+                    <select class="form-select" id="estadoId" name="estadoId" required>
+                        <option value="" disabled selected>Selecciona un Estado</option>
+                        <option th:each="estado : ${estados}" th:value="${estado.estadoId}" th:text="${estado.estado}"></option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Crear Evento</button>
+            </form>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-...">
+</script>
+</body>
+</html>

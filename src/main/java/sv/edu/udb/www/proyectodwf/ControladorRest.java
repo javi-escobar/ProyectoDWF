@@ -70,4 +70,16 @@ public class ControladorRest {
         log.info("Vista de Reservar Cupo");
         return "cliente/reservarcupo";
     }
+
+    @GetMapping("/controlevento")
+    public String controlevento() {
+        log.info("Vista de Control de eventos");
+        return "admin/controlevento";
+    }
+    
+    @GetMapping("/editarevento")
+    public String editarevento() {
+        log.info("Vista de Editar el evento");
+        return "admin/editarevento";
+    }
 }

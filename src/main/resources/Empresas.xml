@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="https://jakarta.ee/xml/ns/persistence/orm"
+                 version="3.0">
+
+    <entity class="sv.edu.udb.www.proyectodwf.entities.Empresas">
+        <table name="empresas" schema="dwf_proyecto" catalog=""/>
+        <attributes>
+            <id name="empresaId">
+                <column name="empresa_id" precision="-1"/>
+            </id>
+            <basic name="nombreEmpresa">
+                <column name="nombre_empresa" nullable="false" length="100"/>
+            </basic>
+            <basic name="descripcion">
+                <column name="descripcion" nullable="false" length="200"/>
+            </basic>
+            <basic name="representanteId">
+                <column name="representante_id" nullable="false" precision="-1"/>
+            </basic>
+        </attributes>
+    </entity>
+</entity-mappings>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="https://jakarta.ee/xml/ns/persistence/orm"
+                 version="3.0">
+
+    <entity class="sv.edu.udb.www.proyectodwf.entities.TipoUsuario">
+        <table name="tipo_usuario" schema="dwf_proyecto" catalog=""/>
+        <attributes>
+            <id name="tipoUsuarioId">
+                <column name="tipo_usuario_id" precision="-1"/>
+            </id>
+            <basic name="nombreTipoUsuario">
+                <column name="nombre_tipo_usuario" nullable="false" length="100"/>
+            </basic>
+            <basic name="descripcion">
+                <column name="descripcion" nullable="false" length="200"/>
+            </basic>
+        </attributes>
+    </entity>
+</entity-mappings>
