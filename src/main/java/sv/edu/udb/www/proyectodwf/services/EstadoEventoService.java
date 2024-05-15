@@ -57,4 +57,10 @@ public class EstadoEventoService {
                 "SELECT e FROM EstadoEvento e WHERE e.estadoId = 3", EstadoEvento.class);
         return query.getResultList();
     }
+
+    public List<EstadoEvento> estadosAprobadoRechazado() {
+        TypedQuery<EstadoEvento> query = entityManager.createQuery(
+                "SELECT e FROM EstadoEvento e WHERE e.estadoId = 1 OR e.estadoId = 2", EstadoEvento.class);
+        return query.getResultList();
+    }
 }

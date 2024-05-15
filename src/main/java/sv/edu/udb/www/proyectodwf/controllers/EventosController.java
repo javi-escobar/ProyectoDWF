@@ -67,6 +67,32 @@ public class EventosController {
         return "redirect:/eventos/listar";
     }
 
+    @GetMapping("/modificar/{id}")
+    public String mostrarFormularioModificarEvento(@PathVariable("id") int id, Model model) {
+        Eventos evento = eventosService.buscarEventoPorId(id);
+        model.addAttribute("evento", evento);
+        model.addAttribute("nombresEmpresas", empresasService.obtenerNombresEmpresas());
+        model.addAttribute("tipos", tipoEventoService.obtenerNombresTipoEventos());
+        model.addAttribute("estados", estadoEventoService.estadosAprobadoRechazado());
+        return "eventos/modificar";
+    }
+
+    @PostMapping("/modificar/{id}")
+    public String modificarEvento(@PathVariable("id") int id, @ModelAttribute("evento") Eventos evento) {
+        Eventos eventoAnterior = eventosService.buscarEventoPorId(id);
+        int estadoAnterior = eventoAnterior.getEstadoId();
+        evento.setEventoId(id);
+        eventosService.actualizarEvento(evento);
+
+        //Actualiza el campo 'Motivo'
+        if (estadoAnterior == 2 && evento.getEstadoId() == 1) {
+            evento.setMotivo("Vacío"); 
+            eventosService.actualizarEvento(evento);
+        }
+
+        return "redirect:/eventos/listar";
+    }
+
     @GetMapping("/eliminar/{id}")
     public String eliminarEvento(@PathVariable("id") int id) {
         eventosService.eliminarEvento(id);

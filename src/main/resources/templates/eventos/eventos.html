@@ -58,8 +58,7 @@
 </header>
 <div class="container">
     <div class="row">
-        <div class="col"></div>
-        <div class="col-10">
+        <div class="col-12">
             <h1>Listado de Eventos</h1>
             <table class="table">
                 <thead>
@@ -75,6 +74,7 @@
                     <th scope="col">Tipo Evento</th>
                     <th scope="col">Empresa Organizadora</th>
                     <th scope="col">Estado</th>
+                    <th scope="col">Motivo</th>
                     <th scope="col">Acciones</th>
                 </tr>
                 </thead>
@@ -91,16 +91,18 @@
                     <td th:text="${tipos[__${evento.tipoEventoId}__]}"></td>
                     <td th:text="${nombresEmpresas[__${evento.empresaId}__]}"></td>
                     <td th:text="${estados[__${evento.estadoId}__]}"></td>
+                    <td th:if="${evento.motivo != null}" th:text="${evento.motivo}"></td>
+                    <td th:if="${evento.motivo == null}">Vacío</td>
                     <td>
                         <a th:href="@{'/eventos/editar/' + ${evento.eventoId}}" class="btn btn-info">Editar</a>
                         <a href="#" th:onclick="'javascript:confirmarEliminacion(' + ${evento.eventoId} + ');'" class="btn btn-danger">Eliminar</a>
+                        <a th:href="@{'/eventos/modificar/' + ${evento.eventoId}}" class="btn btn-warning">Modificar Estado</a>
                     </td>
                 </tr>
                 </tbody>
             </table>
             <a class="btn btn-primary" href="/eventos/crear">Crear Nuevo Evento</a>
         </div>
-        <div class="col"></div>
     </div>
 </div>
 

@@ -41,6 +41,9 @@ public class Eventos {
     @Basic
     @Column(name = "estado_id", nullable = true)
     private Integer estadoId;
+    @Basic
+    @Column(name = "Motivo", nullable = true, length = 200)
+    private String motivo;
 
     public int getEventoId() {
         return eventoId;
@@ -128,5 +131,13 @@ public class Eventos {
 
     public void setEstadoId(Integer estadoId) {
         this.estadoId = estadoId;
+    }
+
+    public String getMotivo() {
+        return motivo;
+    }
+
+    public void setMotivo(String motivo) {
+        this.motivo = motivo;
     }
 }

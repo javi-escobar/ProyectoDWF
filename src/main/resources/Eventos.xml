@@ -38,6 +38,9 @@
             <basic name="estadoId">
                 <column name="estado_id" nullable="false" precision="-1"/>
             </basic>
+            <basic name="motivo">
+                <column name="Motivo" nullable="false" length="200"/>
+            </basic>
         </attributes>
     </entity>
 </entity-mappings>
