@@ -86,7 +86,7 @@ public class EventosController {
 
         //Actualiza el campo 'Motivo'
         if (estadoAnterior == 2 && evento.getEstadoId() == 1) {
-            evento.setMotivo("Vacío"); 
+            evento.setMotivo("Vacío");
             eventosService.actualizarEvento(evento);
         }
 
