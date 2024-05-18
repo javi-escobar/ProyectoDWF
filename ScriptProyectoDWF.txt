@@ -1,0 +1,94 @@
+-- Creación de la base de datos dwf_proyecto
+CREATE DATABASE IF NOT EXISTS dwf_proyecto;
+USE dwf_proyecto;
+
+-- Tabla TipoUsuario
+CREATE TABLE IF NOT EXISTS tipo_usuario (
+    tipo_usuario_id INT PRIMARY KEY AUTO_INCREMENT,
+    nombre_tipo_usuario VARCHAR(100),
+    descripcion VARCHAR(200)
+);
+
+-- Insertar tipos de usuario
+INSERT INTO tipo_usuario (nombre_tipo_usuario, descripcion) VALUES 
+('Administrador', 'Puede aprobar o no un evento registrado por un organizador, eliminar un evento, modificar un evento y acceso completo a la aplicación.'),
+('Organizador', 'Puede registrar un evento, registrando el nombre, una descripción, tipo de evento, ubicación, fecha, hora, capacidad y la empresa organizadora.'),
+('Usuario normal', 'Podrá visualizar los eventos disponibles, buscar eventos por nombre, tipo, ubicación, fecha y hora y reservar cupo en el evento que desee.');
+
+-- Tabla Usuarios
+CREATE TABLE IF NOT EXISTS usuarios (
+    usuario_id INT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(100),
+    correo_electronico VARCHAR(100),
+    contrasena VARCHAR(50),
+    tipo_usuario_id INT
+);
+
+-- Insertar usuario tipo Administrador
+INSERT INTO usuarios (nombre, correo_electronico, contrasena, tipo_usuario_id) 
+VALUES ('Admin', 'admin@gmail.com', 'admin123', 1);
+
+-- Tabla TipoEvento
+CREATE TABLE IF NOT EXISTS tipo_evento (
+    tipo_evento_id INT PRIMARY KEY AUTO_INCREMENT,
+    nombre_tipo_evento VARCHAR(100),
+    descripcion VARCHAR(200)
+);
+
+-- Tabla Empresas
+CREATE TABLE IF NOT EXISTS empresas (
+    empresa_id INT PRIMARY KEY AUTO_INCREMENT,
+    nombre_empresa VARCHAR(100),
+    descripcion VARCHAR(200),
+    representante_id INT
+);
+
+-- Tabla Eventos
+CREATE TABLE IF NOT EXISTS eventos (
+    evento_id INT PRIMARY KEY AUTO_INCREMENT,
+    nombre_evento VARCHAR(100),
+    descripcion VARCHAR(200),
+    tipo_evento_id INT,
+    ubicacion VARCHAR(100),
+    fecha DATE,
+    hora VARCHAR(5),
+    capacidad INT,
+    precio DECIMAL(10, 2),
+    empresa_id INT,
+    estado_id INT,
+    Motivo VARCHAR(200) 
+);
+
+-- Tabla Reservaciones
+CREATE TABLE IF NOT EXISTS reservaciones (
+    reservacion_id INT PRIMARY KEY AUTO_INCREMENT,
+    evento_id INT,
+    usuario_id INT,
+    nombre_contacto VARCHAR(100),
+    correo_electronico VARCHAR(100),
+    telefono VARCHAR(20),
+    cantidad_cupos INT,
+    total_pagar DECIMAL(10, 2)
+);
+
+-- Tabla EstadoEvento
+CREATE TABLE IF NOT EXISTS estado_evento (
+    estado_id INT PRIMARY KEY AUTO_INCREMENT,
+    estado VARCHAR(20)
+);
+
+-- Valores para tabla EstadoEvento
+INSERT INTO estado_evento (estado) VALUES
+('Aprobado'),
+('Rechazado'),
+('En Espera'),
+('Finalizado');
+
+-- Llaves foráneas
+ALTER TABLE usuarios ADD FOREIGN KEY (tipo_usuario_id) REFERENCES tipo_usuario(tipo_usuario_id);
+ALTER TABLE eventos ADD FOREIGN KEY (tipo_evento_id) REFERENCES tipo_evento(tipo_evento_id);
+ALTER TABLE eventos ADD FOREIGN KEY (empresa_id) REFERENCES empresas(empresa_id);
+ALTER TABLE reservaciones ADD FOREIGN KEY (evento_id) REFERENCES eventos(evento_id);
+ALTER TABLE reservaciones ADD FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id);
+ALTER TABLE eventos ADD FOREIGN KEY (estado_id) REFERENCES estado_evento(estado_id);
+ALTER TABLE empresas ADD FOREIGN KEY (representante_id) REFERENCES usuarios(usuario_id);
